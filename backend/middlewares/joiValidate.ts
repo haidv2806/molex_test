@@ -72,7 +72,15 @@ function joiValidate(
       });
     }
 
-    req[property] = value;
+    if (property === "query") {
+      Object.defineProperty(req, "query", {
+        value,
+        writable: true,
+        configurable: true,
+      });
+    } else {
+      req[property] = value;
+    }
     next();
   };
 }

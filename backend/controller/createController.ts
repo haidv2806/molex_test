@@ -19,7 +19,7 @@ const joiBody = Joi.object({
 
 
 createController.post("",
-    joiValidate(joiBody),
+    joiValidate(joiBody, 'body'),
     async (req, res) => {
         const { title, content } = req.body
 
