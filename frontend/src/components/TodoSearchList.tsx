@@ -36,7 +36,7 @@ export function TodoSearchList({
           <input
             type="text"
             className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-sm"
-            placeholder="Tìm kiếm công việc..."
+            placeholder="Search tasks..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
           />
@@ -51,9 +51,9 @@ export function TodoSearchList({
             else onCompletedFilterChange(false);
           }}
         >
-          <option value="all">Tất cả</option>
-          <option value="active">Chưa xong</option>
-          <option value="completed">Đã xong</option>
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="completed">Completed</option>
         </select>
       </div>
 
@@ -65,15 +65,15 @@ export function TodoSearchList({
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            Đang tải dữ liệu...
+            Loading data...
           </div>
         ) : (
           <div className="flex flex-col gap-3 pb-6">
             {todos.length === 0 ? (
               <div className="text-center text-gray-400 mt-10 font-medium">
                 {(searchQuery || completedFilter !== undefined) 
-                  ? 'Không tìm thấy công việc phù hợp bộ lọc.' 
-                  : 'Bạn chưa có công việc nào. Thêm ngay nhé!'}
+                  ? 'No tasks match your filters.' 
+                  : 'You have no tasks yet. Add one now!'}
               </div>
             ) : (
               todos.map(todo => (
@@ -93,7 +93,7 @@ export function TodoSearchList({
       {pagination && pagination.total_items > 0 && (
         <div className="px-6 py-3 bg-white border-t border-gray-100 flex items-center justify-between flex-shrink-0">
           <span className="text-sm font-medium text-gray-500">
-            Trang {pagination.current_page} / {pagination.total_pages} (Tổng {pagination.total_items})
+            Page {pagination.current_page} / {pagination.total_pages} (Total {pagination.total_items})
           </span>
           <div className="flex gap-2">
             <button 
@@ -101,14 +101,14 @@ export function TodoSearchList({
               disabled={pagination.current_page <= 1}
               onClick={() => onPageChange(pagination.current_page - 1)}
             >
-              Trước
+              Previous
             </button>
             <button 
               className="px-3 py-1.5 text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               disabled={pagination.current_page >= pagination.total_pages}
               onClick={() => onPageChange(pagination.current_page + 1)}
             >
-              Sau
+              Next
             </button>
           </div>
         </div>

@@ -37,7 +37,7 @@ getTodosController.get("",
 
         return res.status(200).json({
             success: true,
-            message: "Lấy danh sách thành công",
+            message: "Fetched successfully",
             data: result.data,
             pagination: result.pagination
         });

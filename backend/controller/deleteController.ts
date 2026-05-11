@@ -21,7 +21,7 @@ deleteController.delete("/:id",
 
         return res.status(200).json({
             success: true,
-            message: "Xoá thành công",
+            message: "Deleted successfully",
             data: result,
         });
     }

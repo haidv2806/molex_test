@@ -43,7 +43,7 @@ export default async function update(input: Input, pool: PoolClient): Promise<to
     const result = await pool.query(query, params);
 
     if (result.rows.length === 0) {
-        throw new AppError("Không tìm thấy todo", 404);
+        throw new AppError("Todo not found", 404);
     }
 
     return result.rows[0];

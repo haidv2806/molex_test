@@ -28,7 +28,7 @@ export function TodoCard({ todo, onToggle, onDelete }: Props) {
       <button 
         className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-red-50 text-red-400 hover:bg-red-500 hover:text-white transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
         onClick={() => onDelete(todo.id)}
-        title="Xoá"
+        title="Delete"
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="3 6 5 6 21 6"></polyline>

@@ -62,7 +62,7 @@ function App() {
     try {
       setLoadingAdd(true);
       await createTodo({ title, content });
-      showToast('success', 'Thêm mới thành công');
+      showToast('success', 'Created successfully');
 
       // Clear filters và quay về trang 1
       if (searchQuery !== '' || completedFilter !== undefined) {
@@ -91,11 +91,11 @@ function App() {
   };
 
   const handleDelete = async (id: number) => {
-    if (!window.confirm("Bạn có chắc muốn xoá Todo này?")) return;
+    if (!window.confirm("Are you sure you want to delete this Todo?")) return;
     try {
       setTodos(prev => prev.filter(t => t.id !== id));
       await deleteTodo(id);
-      showToast('success', 'Đã xoá Todo');
+      showToast('success', 'Deleted Todo');
     } catch (error) {
       fetchTodos({ title: searchQuery || undefined, completed: completedFilter, page, limit });
     }
@@ -108,7 +108,7 @@ function App() {
 
         {/* Header */}
         <div className="px-6 py-5 border-b border-gray-100 bg-white z-10 flex-shrink-0">
-          <h1 className="text-2xl font-extrabold text-gray-800 text-center tracking-tight">Quản lý công việc</h1>
+          <h1 className="text-2xl font-extrabold text-gray-800 text-center tracking-tight">Task Management</h1>
         </div>
 
         <TodoCreate onAdd={handleAdd} loading={loadingAdd} />

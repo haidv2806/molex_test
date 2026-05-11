@@ -18,7 +18,7 @@ export default async function deleteTodo(input: Input, pool: PoolClient): Promis
     const result = await pool.query(query, [id]);
 
     if (result.rows.length === 0) {
-        throw new AppError("Không tìm thấy todo", 404);
+        throw new AppError("Todo not found", 404);
     }
 
     return result.rows[0];

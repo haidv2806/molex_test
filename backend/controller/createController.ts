@@ -29,7 +29,7 @@ createController.post("",
 
         return res.status(200).json({
             success: true,
-            message: "Thêm mới thành công",
+            message: "Created successfully",
             data: result
         });
     }

@@ -47,7 +47,7 @@ export const createTodo = async (payload: CreateTodoPayload): Promise<{ data: to
  * Cập nhật một todo theo ID
  */
 export const updateTodo = async (id: number, payload: UpdateTodoPayload): Promise<{ data: todoModel }> => {
-    const response = await axiosInstance.put(`/todos/${id}`, payload);
+    const response = await axiosInstance.patch(`/todos/${id}`, payload);
     return {
         data: response.data?.data
     }

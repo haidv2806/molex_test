@@ -16,7 +16,7 @@ const joiBody = Joi.object({
     completed: Joi.boolean().optional(),
 }).min(1);
 
-updateController.put("/:id",
+updateController.patch("/:id",
     joiValidate(joiParams, "params"),
     joiValidate(joiBody, "body"),
     async (req, res) => {
@@ -29,7 +29,7 @@ updateController.put("/:id",
 
         return res.status(200).json({
             success: true,
-            message: "Cập nhật thành công",
+            message: "Updated successfully",
             data: result,
         });
     }
