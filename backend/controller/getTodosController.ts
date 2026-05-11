@@ -27,7 +27,7 @@ getTodosController.get("",
         const limit = req.query.limit ? Number(req.query.limit) : undefined;
 
         const result = await withTransaction(async (pool) => {
-            return await Todo.getTodos({
+            return await Todo.get({
                 title,
                 completed,
                 page,
