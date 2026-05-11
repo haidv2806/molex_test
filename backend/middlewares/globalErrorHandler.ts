@@ -23,14 +23,14 @@ export function globalErrorHandler(
     // Nếu statusCode = 200 → thông báo bình thường, result vẫn false
     if (err.statusCode === 200) {
       return res.status(200).json({
-        result: true,
+        success: true,
         message: err.message,
         type: "Info",
       });
     }
 
     return res.status(err.statusCode).json({
-      result: false,
+      success: false,
       message: err.message,
       type: "AppError",
     });

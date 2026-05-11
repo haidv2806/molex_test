@@ -1,8 +1,8 @@
 CREATE TABLE todo (
     id SERIAL PRIMARY KEY,
     title VARCHAR(50),
-    body VARCHAR(255),
-    completed BOOLEAN,
+    content VARCHAR(255),
+    completed BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

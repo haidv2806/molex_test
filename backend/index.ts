@@ -3,10 +3,13 @@ import { server, app } from "@/serverConfig";
 import { pool } from "@middlewares/database";
 import { globalErrorHandler } from "@middlewares/globalErrorHandler";
 import { AppError } from "@middlewares/AppError";
+import todoController from "@/controller/_controler";
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+app.use("/todo", todoController);
 
 // Route không khớp → 404
 app.use((req, _res, next) => {
