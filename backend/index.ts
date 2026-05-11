@@ -1,4 +1,3 @@
-import "express-async-errors";
 import express from "express";
 import { server, app } from "@/serverConfig";
 import { pool } from "@middlewares/database";
@@ -10,7 +9,7 @@ app.get('/health', (req, res) => {
 });
 
 // Route không khớp → 404
-app.all("*", (req, _res, next) => {
+app.use((req, _res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
