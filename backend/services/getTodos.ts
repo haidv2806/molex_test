@@ -1,5 +1,6 @@
 import { PoolClient } from "pg";
 import { todoModel } from "@/model/todoModel";
+import { AppError } from "@/middlewares/AppError";
 import {
     PaginationMetadata,
     PaginationQueryMetadata
@@ -80,6 +81,10 @@ export default async function getTodos(
     query += ";";
 
     const result = await pool.query(query, params);
+
+    if (result.rows.length === 0) {
+        throw new AppError("Không tìm thấy todo", 404);
+    }
 
     return {
         data: result.rows,
