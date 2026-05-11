@@ -9,7 +9,10 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.use("/todo", todoController);
+app.use("/todos", todoController);
+
+export { app };
+
 
 // Route không khớp → 404
 app.use((req, _res, next) => {

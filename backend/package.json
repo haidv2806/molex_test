@@ -4,27 +4,67 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "nodemon index.ts",
+    "check": "tsc --noEmit",
+    "test": "ts-mocha -p tsconfig.json --paths --timeout 30000 --exit \"test/**/*.test.ts\"",
+    "test:file": "ts-mocha -p tsconfig.json --paths --timeout 30000 --exit",
+    "test:coverage": "nyc ts-mocha -p tsconfig.json --paths --timeout 30000 --exit \"test/**/*.test.ts\""
+  },
+  "nyc": {
+    "all": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "controller/**/*.ts",
+      "services/**/*.ts",
+      "middlewares/**/*.ts",
+      "utilities/**/*.ts",
+      "model/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "test/**/*.test.ts",
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "text",
+      "lcov",
+      "text-summary"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^5.2.3",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/mocha": "^10.0.10",
     "@types/node": "^25.6.2",
     "@types/pg": "^8.20.0",
+    "@types/sinon": "^21.0.1",
+    "@types/supertest": "^7.2.0",
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "nyc": "^18.0.0",
+    "sinon": "^22.0.0",
+    "supertest": "^7.2.2",
+    "ts-mocha": "^11.1.0",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^6.0.3"
   },
   "dependencies": {
+    "chai-as-promised": "^8.0.2",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.1",
     "helmet": "^8.1.0",
     "nodemon": "^3.1.14",
+    "pactum": "^3.9.1",
     "pg": "^8.20.0",
     "winston": "^3.19.0"
   }

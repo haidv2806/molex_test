@@ -6,9 +6,9 @@ import deleteController from "@/controller/deleteController";
 
 const TodoController = express.Router();
 
-TodoController.use("/create", createController);
-TodoController.use("/get", getTodosController);
-TodoController.use("/update", updateController);
-TodoController.use("/delete", deleteController);
+TodoController.use("/", createController);
+TodoController.use("/", getTodosController);
+TodoController.use("/", updateController);
+TodoController.use("/", deleteController);
 
 export default TodoController;

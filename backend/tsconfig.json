@@ -13,6 +13,8 @@
     "checkJs": false, // Nếu muốn kiểm tra type trong file .js thì bật true
     "outDir": "dist", // Nơi chứa file build sau khi tsc chạy
     "baseUrl": ".",
+    "rootDir": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": [
         "./*"
